@@ -30,7 +30,13 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
-            if grep -q debugger "$file"; then
-              echo "$file has debugger fail it"
-            fi
+            declare -a arr=("debugger" "element2" "element3")
+            ## now loop through the above array
+            for i in "${arr[@]}"
+            do
+              if grep -q $i "$file"; then
+                echo "$file has $i fail it"
+              fi
+               # or do whatever with individual element of the array
+            done
           done
