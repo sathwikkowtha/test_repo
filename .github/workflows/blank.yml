@@ -36,6 +36,7 @@ jobs:
             do
               if grep -q $i "$file"; then
                 echo "$file has $i fail it"
+                exit 1
               fi
                # or do whatever with individual element of the array
             done
