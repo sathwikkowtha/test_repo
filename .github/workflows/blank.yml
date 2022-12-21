@@ -1,4 +1,4 @@
-name: CI
+name: codeScan
 
 on:
   # Compare the preceeding commit of main -> to the current commit of the main branch.
@@ -28,7 +28,7 @@ jobs:
 
       - name: List all changed files
         run: |
-          declare -a ignore=("test.xml" "element2" "element3")
+          declare -a ignore=(".github/workflows/check_for.yml" ".github/workflows/blank.yml")
           readarray -d , -t arr < .github/workflows/check_for.txt
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
             echo "$file"
@@ -38,9 +38,8 @@ jobs:
             else
                 for i in "${arr[@]}"
                   do
-                    echo "$i $file"
                     if grep -q $i "$file"; then
-                      echo "$file has $i fail it"
+                      echo "$file has $i"
                       fail_it="true"
                     fi
                   done
