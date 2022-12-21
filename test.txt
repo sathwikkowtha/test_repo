@@ -1,4 +1,4 @@
 test
 debugger
-debugger
+debugger;
 element3
