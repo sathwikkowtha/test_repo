@@ -28,16 +28,17 @@ jobs:
 
       - name: List all changed files
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
-            declare -a arr=("debugger" "element2" "element3")
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
+            declare -a arr=$(check_for.txt)
+            ##("debugger" "element2" "element3")
             ## now loop through the above array
+            fail_it=false
             for i in "${arr[@]}"
             do
               if grep -q $i "$file"; then
                 echo "$file has $i fail it"
-                exit 1
-              fi
-               # or do whatever with individual element of the array
+                fail_it=true
             done
+            if [ $fail_it ]; then
+              exit 1
           done
