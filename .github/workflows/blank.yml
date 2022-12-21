@@ -30,7 +30,7 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
             readarray -d , -t arr < .github/workflows/check_for.txt
-            readarray -d , -t ignore < .github/workflows/ignore.txt
+            IFS=$'\r\n' GLOBIGNORE='*' command eval  'ignore=($(cat .github/workflows/ignore.txt))'
             fail_it="false"
             for i in "${arr[@]}"
             do
