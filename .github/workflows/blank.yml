@@ -38,6 +38,7 @@ jobs:
             else
                 for i in "${arr[@]}"
                   do
+                    echo "$i $file"
                     if grep -q $i "$file"; then
                       echo "$file has $i fail it"
                       fail_it="true"
