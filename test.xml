@@ -13,7 +13,7 @@
 * @param {ApiHelpers} params.helpers
 */
 function handler({api, event, helpers, imports}) {
-        debugger;
+        debugger
 	api.data.look_up_user_preferences.result.preferences.forEach(
 		obj => {
 			if (obj.name === api.state.userDateTimeFormatPreferenceLabel)
