@@ -31,6 +31,7 @@ jobs:
           declare -a ignore=("test.xml" "element2" "element3")
           readarray -d , -t arr < .github/workflows/check_for.txt
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
+            echo "$file"
             fail_it="false"
             if [[ " ${ignore[*]} " =~ " ${file} " ]]; then
                 echo "$file is ignored"
