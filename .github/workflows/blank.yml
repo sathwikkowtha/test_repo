@@ -28,7 +28,7 @@ jobs:
 
       - name: List all changed files
         run: |
-          declare -a ignore = ("test.xml""blank.yml")
+          declare -a ignore=("test.xml" "element2" "element3")
           echo "$ignore[*]"
           readarray -d , -t arr < .github/workflows/check_for.txt
           echo "$arr[*]"
