@@ -29,7 +29,7 @@ jobs:
       - name: List all changed files
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
-            readarray -t arr < .github/workflows/check_for.txt
+            readarray -d , -t arr < .github/workflows/check_for.txt
             ##arr= $(cat .github/workflows/check_for.txt)
             ##("debugger" "element2" "element3")
             ## now loop through the above array
