@@ -32,13 +32,15 @@ jobs:
             arr=$(check_for.txt)
             ##("debugger" "element2" "element3")
             ## now loop through the above array
-            fail_it=false
+            fail_it="false"
             for i in "${arr[@]}"
             do
               if grep -q $i "$file"; then
                 echo "$file has $i fail it"
-                fail_it=true
+                fail_it="true"
+              fi
             done
-            if [ $fail_it ]; then
+            if [ $fail_it == "true" ]; then
               exit 1
+            fi
           done
