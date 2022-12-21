@@ -29,7 +29,7 @@ jobs:
       - name: List all changed files
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
-            arr=$(check_for.txt)
+            arr= 'cat check_for.txt'
             ##("debugger" "element2" "element3")
             ## now loop through the above array
             fail_it="false"
