@@ -32,18 +32,18 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
             readarray -d , -t arr < .github/workflows/check_for.txt
             fail_it="false"
-            for i in "${arr[@]}"
             if [[ " ${ignore[*]} " =~ " ${file} " ]]; then
                 echo "$file is ignored"
             else
-              do
-                if grep -q $i "$file"; then
-                  echo "$file has $i fail it"
-                  fail_it="true"
+              for i in "${arr[@]}"
+                do
+                  if grep -q $i "$file"; then
+                    echo "$file has $i fail it"
+                    fail_it="true"
+                  fi
+                done
+                if [ $fail_it == "true" ]; then
+                  exit 1
                 fi
-              done
-              if [ $fail_it == "true" ]; then
-                exit 1
-              fi
             fi
           done
