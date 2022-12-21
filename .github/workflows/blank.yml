@@ -28,7 +28,8 @@ jobs:
 
       - name: List all changed files
         run: |
-          IFS=$',' GLOBIGNORE='*' command eval  'ignore=($(cat .github/workflows/ignore.txt))'
+          readarray -d , -t ignore < .github/workflows/ignore.txt
+          echo "$ignore"
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
             readarray -d , -t arr < .github/workflows/check_for.txt
             fail_it="false"
