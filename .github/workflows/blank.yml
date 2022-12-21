@@ -28,10 +28,9 @@ jobs:
 
       - name: List all changed files
         run: |
-          ##readarray -d , -t ignore < .github/workflows/ignore.txt
           ignore = ("test.xml");
           echo "$ignore"
-          eadarray -d , -t arr < .github/workflows/check_for.txt
+          readarray -d , -t arr < .github/workflows/check_for.txt
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do  
             fail_it="false"
             if [[ " ${ignore[*]} " =~ " ${file} " ]]; then
