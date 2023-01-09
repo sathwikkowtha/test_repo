@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+  <unload>
+  <sys_ux_client_script action="INSERT_OR_UPDATE">
+    <includes/>
+    <macroponent display_value="On-Call Shift Details">a62a252a733230108ef62d2b04f6a747</macroponent>
+    <name>Get Preference</name>
+    <preset/>
+    <required_translations>[ ]</required_translations>
+    <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+        debugger;
+	api.data.look_up_user_preferences.result.preferences.forEach(
+		obj => {
+			if (obj.name === api.state.userDateTimeFormatPreferenceLabel)
+				api.setState('useDefaultDateFormat'x, obj.value === 'true');
+		}
+	);
+}]]></script>
+    <script_api_version>2.0.0</script_api_version>
+    <sys_class_name>sys_ux_client_script</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2021-12-08 07:27:09</sys_created_on>
+    <sys_id>d724c66153540110af76ddeeff7b12ab</sys_id>
+    <sys_mod_count>5</sys_mod_count>
+    <sys_name>Get Preference</sys_name>
+    <sys_package display_value="On Call Scheduling for Service Operations Workspace" source="sn_sow_on_call">7e3c2481539260100c54ddeeff7b127b</sys_package>
+    <sys_policy>read</sys_policy>
+    <sys_scope display_value="On Call Scheduling for Service Operations Workspace">7e3c2481539260100c54ddeeff7b127b</sys_scope>
+    <sys_update_name>sys_ux_client_script_d724c66153540110af76ddeeff7b12ab</sys_update_name>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-12-16 05:48:31</sys_updated_on>
+    <target>macroponent</target>
+    <type>default</type>
+  </sys_ux_client_script>
+    </unload>
+</record_update>
